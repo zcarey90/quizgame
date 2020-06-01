@@ -1,5 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function Indexcard({ indexcard }) {
-  return <div>{indexcard.question}</div>;
+  const [flip, setFlip] = useState(false);
+
+  return (
+    <div onClick={() => setFlip(!flip)}>
+      {flip ? indexcard.answer : indexcard.question}
+    </div>
+  );
 }
