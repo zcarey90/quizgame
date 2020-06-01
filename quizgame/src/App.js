@@ -1,7 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import IndexcardList from "./IndexcardList";
 
 function App() {
-  return <h1>Hello Everybody</h1>;
+  const [indexcards, setIndexcards] = useState(WARMUP_FLASHCARDS);
+  return <IndexcardList indexcards={indexcards} />;
 }
+
+const WARMUP_FLASHCARDS = [
+  {
+    id: 1,
+    question: "How many states are in the United States of America?",
+    answer: "50",
+    options: ["43", "25", "37", "70"],
+  },
+  {
+    id: 2,
+    question: "What is the name of the planet we live on?",
+    answer: "Earth",
+    options: ["Earth", "Krypton", "Venus", "Mercury"],
+  },
+  {
+    id: 3,
+    question: "How many days are in a week?",
+    answer: "7",
+    options: ["7", "6", "3", "4"],
+  },
+];
 
 export default App;
