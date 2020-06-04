@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import IndexcardList from "./IndexcardList";
 
 function App() {
-  const [indexcards, setIndexcards] = useState(WARMUP_FLASHCARDS);
+  const [indexcards, setIndexcards] = useState(WARMUP_INDEXCARDS);
   return <IndexcardList indexcards={indexcards} />;
 }
 
-const WARMUP_FLASHCARDS = [
+const WARMUP_INDEXCARDS = [
   {
     id: 1,
     question: "How many states are in the United States of America?",
