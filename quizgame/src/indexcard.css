@@ -1,0 +1,15 @@
+body {
+  background-color: blue;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.card .front,
+.card .back {
+  position: absolute;
+}

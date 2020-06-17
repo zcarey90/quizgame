@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import IndexcardList from "./IndexcardList";
+import "./indexcard.css";
 
 function App() {
   const [indexcards, setIndexcards] = useState(WARMUP_INDEXCARDS);
