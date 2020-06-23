@@ -1,5 +1,5 @@
 body {
-  background-color: blue;
+  background-color: rgb(74, 112, 106);
 }
 
 .card {
@@ -7,9 +7,32 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
+  border-radius: 0.5rem;
+  box-shadow: cadetblue;
+  background-color: cornsilk;
+  height: 125px;
+  width: 125px;
+  transition: 500ms;
+  transform: perspective(1000px) rotateY(var(--rotate-y, 0))
+    translateY(var(--translate-y, 0));
+}
+
+.card:hover {
+  --translate-y: -1px;
+  box-shadow: rgb(95, 89, 89);
+}
+
+.card.flip {
+  --rotate-y: 180deg;
 }
 
 .card .front,
 .card .back {
   position: absolute;
+  padding: 0.1rem;
+  backface-visibility: hidden;
+}
+
+.card .back {
+  transform: rotateY(180deg);
 }
