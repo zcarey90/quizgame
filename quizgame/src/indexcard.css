@@ -26,6 +26,10 @@ body {
   --rotate-y: 180deg;
 }
 
+.card .front {
+  left: 0;
+}
+
 .card .front,
 .card .back {
   position: absolute;
@@ -35,4 +39,18 @@ body {
 
 .card .back {
   transform: rotateY(180deg);
+}
+
+.indexcard-possibilites {
+  margin-top: 0.5rem;
+}
+
+.indexcard-possibility {
+  margin-top: 0.3rem;
+  color: rgb(61, 60, 60);
+  font-size: 0.8rem;
+}
+
+.indexcard-possibility:first-child {
+  margin-top: 0;
 }
