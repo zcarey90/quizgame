@@ -10,8 +10,11 @@ function App() {
     axios.get("https://opentdb.com/api.php?amount=10").then((res) => {
       setIndexcards(
         res.data.results.map((questionItem, index) => {
-          const answer = questionItem.correct_answer;
-          const options = [...questionItem.incorrect_answers, answer];
+          const answer = decodeString(questionItem.correct_answer);
+          const options = [
+            ...questionItem.incorrect_answers.map((a) => decodeString(a)),
+            answer,
+          ];
           return {
             id: "${index}-$(Date.now()}",
             question: decodeString(questionItem.question),
@@ -36,7 +39,7 @@ const WARMUP_INDEXCARDS = [
     id: 1,
     question: "How many states are in the United States of America?",
     answer: "50",
-    options: ["43", "25", "37", "70"],
+    options: ["43", "25", "37", "50"],
   },
   {
     id: 2,

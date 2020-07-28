@@ -1,5 +1,13 @@
 body {
   background-color: rgb(74, 112, 106);
+  margin: 0;
+}
+
+.indexcard-layout {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
 }
 
 .card {
@@ -11,7 +19,6 @@ body {
   box-shadow: cadetblue;
   background-color: cornsilk;
   height: 125px;
-  width: 125px;
   transition: 500ms;
   transform: perspective(1000px) rotateY(var(--rotate-y, 0))
     translateY(var(--translate-y, 0));
