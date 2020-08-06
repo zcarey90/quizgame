@@ -31,7 +31,11 @@ function App() {
     textArea.innerHTML = str;
     return textArea.value;
   }
-  return <IndexcardList indexcards={indexcards} />;
+  return (
+    <div className="container">
+      <IndexcardList indexcards={indexcards} />
+    </div>
+  );
 }
 
 const WARMUP_INDEXCARDS = [

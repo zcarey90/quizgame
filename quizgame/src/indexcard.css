@@ -3,6 +3,11 @@ body {
   margin: 0;
 }
 
+.container {
+  max-width: 850px;
+  margin: 1rem 2rem;
+}
+
 .indexcard-layout {
   display: grid;
   align-items: center;
