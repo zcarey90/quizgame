@@ -23,7 +23,6 @@ body {
   border-radius: 0.5rem;
   box-shadow: cadetblue;
   background-color: cornsilk;
-  height: 125px;
   transition: 500ms;
   transform: perspective(1000px) rotateY(var(--rotate-y, 0))
     translateY(var(--translate-y, 0));
