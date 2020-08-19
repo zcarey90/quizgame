@@ -1,29 +1,40 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import IndexcardList from "./IndexcardList";
 import "./indexcard.css";
 import axios from "axios";
 
 function App() {
   const [indexcards, setIndexcards] = useState(WARMUP_INDEXCARDS);
+  const [categories, setCategories] = useState([]);
+
+  const categoryA = useRef();
 
   useEffect(() => {
-    axios.get("https://opentdb.com/api.php?amount=10").then((res) => {
-      setIndexcards(
-        res.data.results.map((questionItem, index) => {
-          const answer = decodeString(questionItem.correct_answer);
-          const options = [
-            ...questionItem.incorrect_answers.map((a) => decodeString(a)),
-            answer,
-          ];
-          return {
-            id: "${index}-$(Date.now()}",
-            question: decodeString(questionItem.question),
-            answer: answer,
-            options: options.sort(() => Math.random() - 0.5),
-          };
-        })
-      );
+    axios.get("https://opentdb.com/api_category.php").then((res) => {
+      setCategories(res.data.trivia_categories);
     });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get("https://opentdb.com/api.php?amount=10&category=17")
+      .then((res) => {
+        setIndexcards(
+          res.data.results.map((questionItem, index) => {
+            const answer = decodeString(questionItem.correct_answer);
+            const options = [
+              ...questionItem.incorrect_answers.map((a) => decodeString(a)),
+              answer,
+            ];
+            return {
+              id: "${index}-$(Date.now()}",
+              question: decodeString(questionItem.question),
+              answer: answer,
+              options: options.sort(() => Math.random() - 0.5),
+            };
+          })
+        );
+      });
   }, []);
 
   function decodeString(str) {
@@ -31,10 +42,31 @@ function App() {
     textArea.innerHTML = str;
     return textArea.value;
   }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+
   return (
-    <div className="container">
-      <IndexcardList indexcards={indexcards} />
-    </div>
+    <>
+      <form className="header" onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="category">Category</label>
+          <select id="category" ref={categoryA}>
+            {categories.map((category) => {
+              return (
+                <option value={category.id} key={category.id}>
+                  {category.name}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+      </form>
+      <div className="container">
+        <IndexcardList indexcards={indexcards} />
+      </div>
+    </>
   );
 }
 

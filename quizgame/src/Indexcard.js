@@ -34,7 +34,11 @@ export default function Indexcard({ indexcard }) {
         {indexcard.question}
         <div className="indexcard-options">
           {indexcard.options.map((option) => {
-            return <div className="indexcard-option">{option}</div>;
+            return (
+              <div className="indexcard-option" key={option}>
+                {option}
+              </div>
+            );
           })}
         </div>
       </div>
