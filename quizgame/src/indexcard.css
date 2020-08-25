@@ -8,6 +8,41 @@ body {
   margin: 1rem 2rem;
 }
 
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: darkgray;
+  padding: 0 2rem;
+  box-shadow: 0 0 5px 2px rgb(17, 16, 16);
+}
+
+.quiz-settings {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem;
+}
+
+.quiz-settings > label {
+  color: rgb(160, 114, 114);
+  font-size: medium;
+  margin-bottom: 0.3rem;
+}
+
+.button {
+  background-color: indigo;
+  color: whitesmoke;
+  padding: 0.5em 1em;
+  border-radius: 0.3em;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgb(77, 122, 113);
+}
+
 .indexcard-layout {
   display: grid;
   align-items: center;
