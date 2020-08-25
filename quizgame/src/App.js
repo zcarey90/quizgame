@@ -8,6 +8,7 @@ function App() {
   const [categories, setCategories] = useState([]);
 
   const categoryA = useRef();
+  const quantityA = useRef();
 
   useEffect(() => {
     axios.get("https://opentdb.com/api_category.php").then((res) => {
@@ -61,6 +62,11 @@ function App() {
               );
             })}
           </select>
+        </div>
+        <div className="form-group">
+        <label htmlFor="quantity">number of questions</label>
+        <input type="number" id="quantity" min="1" step="1" defaultValue={10} ref=
+        {quantityA}/>
         </div>
       </form>
       <div className="container">
