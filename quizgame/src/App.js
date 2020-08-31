@@ -16,9 +16,23 @@ function App() {
     });
   }, []);
 
-  useEffect(() => {
+  useEffect(() => {}, []);
+
+  function decodeString(str) {
+    const textArea = document.createElement("textarea");
+    textArea.innerHTML = str;
+    return textArea.value;
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
     axios
-      .get("https://opentdb.com/api.php?amount=10&category=17")
+      .get("https://opentdb.com/api.php", {
+        params: {
+          amount: quantityA.current.value,
+          category: categoryA.current.value,
+        },
+      })
       .then((res) => {
         setIndexcards(
           res.data.results.map((questionItem, index) => {
@@ -36,16 +50,6 @@ function App() {
           })
         );
       });
-  }, []);
-
-  function decodeString(str) {
-    const textArea = document.createElement("textarea");
-    textArea.innerHTML = str;
-    return textArea.value;
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
   }
 
   return (
