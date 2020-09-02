@@ -4,7 +4,7 @@ import "./indexcard.css";
 import axios from "axios";
 
 function App() {
-  const [indexcards, setIndexcards] = useState(WARMUP_INDEXCARDS);
+  const [indexcards, setIndexcards] = useState([]);
   const [categories, setCategories] = useState([]);
 
   const categoryA = useRef();
@@ -68,7 +68,7 @@ function App() {
           </select>
         </div>
         <div className="quiz-settings">
-          <label htmlFor="quantity">number of questions</label>
+          <label htmlFor="quantity">Number of questions</label>
           <input
             type="number"
             id="quantity"
@@ -88,26 +88,5 @@ function App() {
     </>
   );
 }
-
-const WARMUP_INDEXCARDS = [
-  {
-    id: 1,
-    question: "How many states are in the United States of America?",
-    answer: "50",
-    options: ["43", "25", "37", "50"],
-  },
-  {
-    id: 2,
-    question: "What is the name of the planet we live on?",
-    answer: "Earth",
-    options: ["Earth", "Krypton", "Venus", "Mercury"],
-  },
-  {
-    id: 3,
-    question: "How many days are in a week?",
-    answer: "7",
-    options: ["7", "6", "3", "4"],
-  },
-];
 
 export default App;
