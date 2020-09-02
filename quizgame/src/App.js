@@ -42,7 +42,7 @@ function App() {
               answer,
             ];
             return {
-              id: "${index}-$(Date.now()}",
+              id: `${index}-$(Date.now()}`,
               question: decodeString(questionItem.question),
               answer: answer,
               options: options.sort(() => Math.random() - 0.5),
@@ -74,7 +74,7 @@ function App() {
             id="quantity"
             min="1"
             step="1"
-            defaultValue={10}
+            defaultValue={15}
             ref={quantityA}
           />
         </div>
