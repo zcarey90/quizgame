@@ -8,7 +8,7 @@ function App() {
   const [categories, setCategories] = useState([]);
 
   const categoryA = useRef();
-  const quantityA = useRef();
+  const amountA = useRef();
 
   useEffect(() => {
     axios.get("https://opentdb.com/api_category.php").then((res) => {
@@ -16,10 +16,28 @@ function App() {
     });
   }, []);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    axios.get("http://opentdb.com/api.php?amount=15").then((res) => {
+      setIndexcards(
+        res.data.results.map((questionItem, index) => {
+          const answer = decodeString(questionItem.correct_answer);
+          const options = [
+            ...questionItem.incorrect_answers.map((a) => decodeString(a)),
+            answer,
+          ];
+          return {
+            id: `${index}-${Date.now()}`,
+            question: decodeString(questionItem.question),
+            answer: answer,
+            options: options.sort(() => Math.random() - 0.5),
+          };
+        })
+      );
+    });
+  }, []);
 
   function decodeString(str) {
-    const textArea = document.createElement("textarea");
+    const textArea = document.createElement(`textarea`);
     textArea.innerHTML = str;
     return textArea.value;
   }
@@ -29,7 +47,7 @@ function App() {
     axios
       .get("https://opentdb.com/api.php", {
         params: {
-          amount: quantityA.current.value,
+          amount: amountA.current.value,
           category: categoryA.current.value,
         },
       })
@@ -55,7 +73,7 @@ function App() {
   return (
     <>
       <form className="header" onSubmit={handleSubmit}>
-        <div className="quiz-settings">
+        <div className="form-group">
           <label htmlFor="category">Category</label>
           <select id="category" ref={categoryA}>
             {categories.map((category) => {
@@ -67,18 +85,18 @@ function App() {
             })}
           </select>
         </div>
-        <div className="quiz-settings">
-          <label htmlFor="quantity">Number of questions</label>
+        <div className="form-group">
+          <label htmlFor="amount">Number of questions</label>
           <input
             type="number"
-            id="quantity"
+            id="amount"
             min="1"
             step="1"
             defaultValue={15}
-            ref={quantityA}
+            ref={amountA}
           />
         </div>
-        <div className="quiz-settings">
+        <div className="form-group">
           <button className="button">Populate</button>
         </div>
       </form>

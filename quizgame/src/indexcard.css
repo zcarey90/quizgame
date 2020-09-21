@@ -18,13 +18,13 @@ body {
   box-shadow: 0 0 5px 2px rgb(17, 16, 16);
 }
 
-.quiz-settings {
+.form-group {
   display: flex;
   flex-direction: column;
   margin: 0.5rem;
 }
 
-.quiz-settings > label {
+.form-group > label {
   color: rgb(160, 114, 114);
   font-size: medium;
   margin-bottom: 0.3rem;
@@ -58,6 +58,7 @@ body {
   border-radius: 0.5rem;
   box-shadow: cadetblue;
   background-color: cornsilk;
+  transform-style: preserve-3d;
   transition: 500ms;
   transform: perspective(1000px) rotateY(var(--rotate-y, 0))
     translateY(var(--translate-y, 0));
