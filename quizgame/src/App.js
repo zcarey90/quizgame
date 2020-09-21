@@ -73,7 +73,7 @@ function App() {
   return (
     <>
       <form className="header" onSubmit={handleSubmit}>
-        <div className="form-group">
+        <div className="quiz-settings">
           <label htmlFor="category">Category</label>
           <select id="category" ref={categoryA}>
             {categories.map((category) => {
@@ -85,7 +85,7 @@ function App() {
             })}
           </select>
         </div>
-        <div className="form-group">
+        <div className="quiz-settings">
           <label htmlFor="amount">Number of questions</label>
           <input
             type="number"
@@ -96,7 +96,7 @@ function App() {
             ref={amountA}
           />
         </div>
-        <div className="form-group">
+        <div className="quiz-settings">
           <button className="button">Populate</button>
         </div>
       </form>
